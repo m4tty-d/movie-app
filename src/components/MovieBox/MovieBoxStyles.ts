@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Image from 'material-ui-image'
 import { Theme } from '@material-ui/core'
+import { Image as ImageIcon } from '@material-ui/icons'
 
 export const Holder = styled.div`
   max-width: 200px;
@@ -53,15 +54,22 @@ export const Title = styled('div')(
   margin-bottom: ${theme.spacing(1)}px;
   font-weight: bold;
   font-size: 20px;
-  line-height: 1;
+  line-height: 1.25;
 `,
 )
 
-export const Genres = styled('div')(
-  ({ theme }: { theme: Theme }) => `
-  color: ${theme.palette.text.secondary};
-  color: #5E6465;
+export const Genres = styled.div`
+  color: #5e6465;
   font-size: 14px;
   line-height: 1;
+`
+
+export const StyledImageIcon = styled(ImageIcon)(
+  ({ theme }: { theme: Theme }) => `
+  color: ${theme.palette.text.secondary};
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `,
 )

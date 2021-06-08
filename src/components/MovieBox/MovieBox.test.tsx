@@ -8,16 +8,29 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../../theme'
 
 describe('MovieBox', () => {
+  let rerender: (ui: React.ReactElement) => void
+
   beforeEach(() => {
-    render(
+    const response = render(
       <ThemeProvider theme={theme}>
         <MovieBox movie={movie} />
       </ThemeProvider>,
     )
+
+    rerender = response.rerender
   })
 
   it('displays image', () => {
     expect(screen.getByRole('img').getAttribute('src')).toBe(movie.poster.medium)
+  })
+
+  it('handles empty image', () => {
+    rerender(
+      <ThemeProvider theme={theme}>
+        <MovieBox movie={{ ...movie, poster: null }} />
+      </ThemeProvider>,
+    )
+    expect(screen.getByRole('img').getAttribute('src')).toBe('placeholder.svg')
   })
 
   it('displays score', () => {
