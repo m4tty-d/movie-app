@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client'
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@material-ui/core'
 import { ThemeProvider } from 'styled-components'
 import apolloClient from './graphql/apolloClient'
+import { RecoilRoot } from 'recoil'
 import theme from './theme'
 import './index.css'
 import Home from './pages/Home/'
@@ -14,7 +15,9 @@ ReactDOM.render(
     <ApolloProvider client={apolloClient}>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <Home />
+          <RecoilRoot>
+            <Home />
+          </RecoilRoot>
         </ThemeProvider>
         <CssBaseline />
       </MuiThemeProvider>
