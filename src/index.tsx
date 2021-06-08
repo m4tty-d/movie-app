@@ -2,19 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloProvider } from '@apollo/client'
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@material-ui/core'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
+import { ThemeProvider } from 'styled-components'
 import apolloClient from './graphql/apolloClient'
 import theme from './theme'
 import './index.css'
-import { ThemeProvider } from 'styled-components'
+import Home from './pages/Home/'
+import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <App />
+          <Home />
         </ThemeProvider>
         <CssBaseline />
       </MuiThemeProvider>

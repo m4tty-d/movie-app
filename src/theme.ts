@@ -19,6 +19,11 @@ const theme = createMuiTheme({
   shape: {
     borderRadius: 8,
   },
+  typography: {
+    h4: {
+      fontWeight: 700,
+    },
+  },
 })
 
 export default theme

@@ -35,9 +35,9 @@ const TopBar: React.FC = () => {
     <AppBar position="relative">
       <Container>
         <Toolbar disableGutters>
-          <Typography variant="h6">
-            <Box fontWeight="fontWeightMedium">movie app</Box>
-          </Typography>
+          <Box fontWeight="fontWeightMedium">
+            <Typography variant="h6">movie app</Typography>
+          </Box>
           <StyledTextField
             variant="outlined"
             size="small"
