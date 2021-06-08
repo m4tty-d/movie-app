@@ -1,0 +1,7 @@
+fragment AdditionalMovieDetails on Movie {
+  releaseDate
+  runtime
+  backdrop {
+    medium
+  }
+}

@@ -1,0 +1,11 @@
+fragment ShortMovieDetails on Movie {
+  id
+  name
+  score
+  poster {
+    medium
+  }
+  genres {
+    ...GenreName
+  }
+}

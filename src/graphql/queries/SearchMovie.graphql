@@ -1,0 +1,5 @@
+query SearchMovies($query: String!) {
+  searchMovies(query: $query) {
+    ...ShortMovieDetails
+  }
+}
