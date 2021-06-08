@@ -1,0 +1,15 @@
+overwrite: true
+schema: ${REACT_APP_TMDB_GRAPHQL_API}
+documents: 'src/graphql/**/*.graphql'
+generates:
+  src/__generated__/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      avoidOptionals: true
+      skipTypename: true
+  src/__generated__/graphql.schema.json:
+    plugins:
+      - 'introspection'
