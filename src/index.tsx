@@ -1,15 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import { ApolloProvider } from '@apollo/client'
+import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import apolloClient from './graphql/apolloClient'
-import { ApolloProvider } from '@apollo/client'
+import theme from './theme'
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+        <CssBaseline />
+      </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root'),
