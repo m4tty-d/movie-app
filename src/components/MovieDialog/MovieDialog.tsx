@@ -79,6 +79,7 @@ const MovieModal: React.FC = () => {
                 color="secondary"
                 size="small"
                 component="a"
+                clickable
                 href={movie?.url}
                 target="_blank"
               />
