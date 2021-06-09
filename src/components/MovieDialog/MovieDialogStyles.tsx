@@ -18,11 +18,14 @@ export const StyledDialog = withStyles((theme) => ({
   },
 }))(Dialog)
 
-export const StyledDialogContent = withStyles(() => ({
+export const StyledDialogContent = withStyles((theme) => ({
   root: {
     padding: '40px',
     paddingTop: '36px',
     width: 600,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
 }))(DialogContent)
 

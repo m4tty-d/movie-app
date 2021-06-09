@@ -1,7 +1,24 @@
-import { TextField, withStyles, Theme } from '@material-ui/core'
+import { TextField, withStyles, Theme, Toolbar, Grid } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 import Button from '../global/Button'
 import styled from 'styled-components'
+
+export const StyledGridItem = withStyles((theme) => ({
+  root: {
+    [theme.breakpoints.only('xs')]: {
+      justifyContent: 'center',
+    },
+  },
+}))(Grid)
+
+export const StyledToolbar = withStyles((theme) => ({
+  root: {
+    [theme.breakpoints.only('xs')]: {
+      minHeight: 170,
+      marginBottom: `${theme.spacing(2)}px`,
+    },
+  },
+}))(Toolbar)
 
 export const Logo = styled('div')(
   ({ theme }: { theme: Theme }) => `
@@ -18,9 +35,17 @@ export const Logo = styled('div')(
 )
 
 export const StyledForm = styled.form`
-  margin-left: auto;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 599px) {
+    flex-direction: column;
+    margin-top: 16px;
+
+    button {
+      margin-top: 16px;
+    }
+  }
 `
 
 export const StyledTextField = withStyles((theme) => ({

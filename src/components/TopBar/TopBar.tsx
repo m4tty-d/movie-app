@@ -1,7 +1,15 @@
 import React, { FormEvent, useState } from 'react'
-import { Container, AppBar, Toolbar, InputAdornment } from '@material-ui/core'
+import { Container, AppBar, InputAdornment, Grid } from '@material-ui/core'
 import { MovieFilter, Search } from '@material-ui/icons'
-import { Logo, StyledForm, StyledTextField, StyledButton, ClickableClose } from './TopBarStyles'
+import {
+  StyledToolbar,
+  Logo,
+  StyledForm,
+  StyledTextField,
+  StyledButton,
+  ClickableClose,
+  StyledGridItem,
+} from './TopBarStyles'
 import { useRecoilState } from 'recoil'
 import { searchQueryState, SearchQueryType } from '../../store'
 
@@ -25,34 +33,44 @@ const TopBar: React.FC = () => {
   return (
     <AppBar position="relative">
       <Container>
-        <Toolbar disableGutters>
-          <Logo onClick={() => clear()}>
-            <MovieFilter /> movie app
-          </Logo>
-          <StyledForm onSubmit={handleSubmit}>
-            <StyledTextField
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              variant="outlined"
-              size="small"
-              placeholder="Search for movies by title"
-              autoFocus
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Search></Search>
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    {searchQuery && searchQuery.length ? <ClickableClose onClick={() => clear()}></ClickableClose> : ''}
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <StyledButton type="submit">Search</StyledButton>
-          </StyledForm>
-        </Toolbar>
+        <StyledToolbar disableGutters>
+          <Grid container alignItems="center">
+            <StyledGridItem item container xs={12} sm={6} className="justify-content-">
+              <Logo onClick={() => clear()}>
+                <MovieFilter /> movie app
+              </Logo>
+            </StyledGridItem>
+            <StyledGridItem item container xs={12} sm={6} justify="flex-end" xs-justify="center">
+              <StyledForm onSubmit={handleSubmit}>
+                <StyledTextField
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  variant="outlined"
+                  size="small"
+                  placeholder="Search for movies by title"
+                  autoFocus
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Search></Search>
+                      </InputAdornment>
+                    ),
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        {searchQuery && searchQuery.length ? (
+                          <ClickableClose onClick={() => clear()}></ClickableClose>
+                        ) : (
+                          ''
+                        )}
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <StyledButton type="submit">Search</StyledButton>
+              </StyledForm>
+            </StyledGridItem>
+          </Grid>
+        </StyledToolbar>
       </Container>
     </AppBar>
   )
