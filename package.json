@@ -35,8 +35,8 @@
   },
   "scripts": {
     "start": "concurrently --kill-others \"yarn watch-generate\" \"react-scripts start\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "yarn generate && react-scripts build",
+    "test": "yarn generate && react-scripts test",
     "eject": "react-scripts eject",
     "commit": "cz",
     "generate": "graphql-codegen --config codegen.yml -r dotenv/config",
