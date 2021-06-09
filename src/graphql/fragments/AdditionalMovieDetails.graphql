@@ -4,4 +4,7 @@ fragment AdditionalMovieDetails on Movie {
   backdrop {
     medium
   }
+  socialMedia {
+    imdb
+  }
 }

@@ -73,3 +73,11 @@ export const StyledImageIcon = styled(ImageIcon)(
   transform: translate(-50%, -50%);
 `,
 )
+
+export const LoaderHolder = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+`

@@ -4,16 +4,17 @@ import { render, screen } from '@testing-library/react'
 import MovieList from './MovieList'
 import { ThemeProvider } from 'styled-components'
 import theme from '../../theme'
-import movie from '../../mocks/movie'
-
-const movies = Array.from(Array(3).keys()).map((i) => ({ ...movie, id: `${movie.id}-${i}` }))
+import movies from '../../mocks/movies'
+import { RecoilRoot } from 'recoil'
 
 describe('MovieList', () => {
   beforeEach(() => {
     render(
-      <ThemeProvider theme={theme}>
-        <MovieList movies={movies} />
-      </ThemeProvider>,
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <MovieList movies={movies} />
+        </ThemeProvider>
+      </RecoilRoot>,
     )
   })
 

@@ -1,0 +1,7 @@
+query RelatedMovies($id: ID!) {
+  movie(id: $id) {
+    similar {
+      ...ShortMovieDetails
+    }
+  }
+}

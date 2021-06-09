@@ -1,0 +1,5 @@
+query GetMovie($id: ID!) {
+  movie(id: $id) {
+    ...AdditionalMovieDetails
+  }
+}

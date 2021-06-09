@@ -1,9 +1,9 @@
 import React, { FormEvent, useState } from 'react'
 import { Container, AppBar, Toolbar, InputAdornment } from '@material-ui/core'
-import { Search } from '@material-ui/icons'
+import { MovieFilter, Search } from '@material-ui/icons'
 import { Logo, StyledForm, StyledTextField, StyledButton, ClickableClose } from './TopBarStyles'
 import { useRecoilState } from 'recoil'
-import { searchQueryState } from '../../store'
+import { searchQueryState, SearchQueryType } from '../../store'
 
 const TopBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -13,20 +13,22 @@ const TopBar: React.FC = () => {
     event.preventDefault()
 
     if (searchQuery && searchQuery.length) {
-      setGlobalSearchQuery(searchQuery)
+      setGlobalSearchQuery({ type: SearchQueryType.Search, query: searchQuery })
     }
   }
 
   const clear = () => {
     setSearchQuery('')
-    setGlobalSearchQuery('')
+    setGlobalSearchQuery({ type: SearchQueryType.Search, query: '' })
   }
 
   return (
     <AppBar position="relative">
       <Container>
         <Toolbar disableGutters>
-          <Logo onClick={() => clear()}>movie app</Logo>
+          <Logo onClick={() => clear()}>
+            <MovieFilter /> movie app
+          </Logo>
           <StyledForm onSubmit={handleSubmit}>
             <StyledTextField
               value={searchQuery}

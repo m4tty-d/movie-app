@@ -2,19 +2,24 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import MovieBox from './MovieBox'
-import { mapGenres } from './helpers'
-import movie from '../../mocks/movie'
+import { mapGenres } from '../../utils'
+import movies from '../../mocks/movies'
 import { ThemeProvider } from 'styled-components'
 import theme from '../../theme'
+import { RecoilRoot } from 'recoil'
+
+const movie = movies[0]
 
 describe('MovieBox', () => {
   let rerender: (ui: React.ReactElement) => void
 
   beforeEach(() => {
     const response = render(
-      <ThemeProvider theme={theme}>
-        <MovieBox movie={movie} />
-      </ThemeProvider>,
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <MovieBox movie={movie} />
+        </ThemeProvider>
+      </RecoilRoot>,
     )
 
     rerender = response.rerender
@@ -26,9 +31,11 @@ describe('MovieBox', () => {
 
   it('handles empty image', () => {
     rerender(
-      <ThemeProvider theme={theme}>
-        <MovieBox movie={{ ...movie, poster: null }} />
-      </ThemeProvider>,
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <MovieBox movie={{ ...movie, poster: null }} />
+        </ThemeProvider>
+      </RecoilRoot>,
     )
     expect(screen.getByRole('img').getAttribute('src')).toBe('placeholder.svg')
   })

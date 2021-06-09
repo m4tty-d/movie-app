@@ -1,12 +1,21 @@
-import { TextField, Button, withStyles } from '@material-ui/core'
+import { TextField, withStyles, Theme } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
+import Button from '../global/Button'
 import styled from 'styled-components'
 
-export const Logo = styled.div`
+export const Logo = styled('div')(
+  ({ theme }: { theme: Theme }) => `
   cursor: pointer;
   font-weight: 500;
   font-size: 20px;
-`
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: ${theme.spacing(1)}px;
+  }
+`,
+)
 
 export const StyledForm = styled.form`
   margin-left: auto;
@@ -24,10 +33,7 @@ export const StyledTextField = withStyles((theme) => ({
 
 export const StyledButton = withStyles((theme) => ({
   root: {
-    background: 'linear-gradient(98deg, rgba(74,136,208,1) 0%, rgba(56,74,212,1) 69%)',
     marginLeft: theme.spacing(2),
-    textTransform: 'none',
-    width: '100px',
   },
 }))(Button)
 
